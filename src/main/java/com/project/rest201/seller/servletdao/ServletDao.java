@@ -10,16 +10,19 @@ import com.project.rest201.seller.model.SellerProduct;
 @Repository
 public class ServletDao {
 
-	private List<SellerProduct> list=new LinkedList<SellerProduct>();;
+	public static List<SellerProduct> list=new LinkedList<SellerProduct>();;
+	private SellerProduct sellerProduct;
 	
-	
-	public void init(){
-		System.out.println("Entring Seller servlet dao");
-		
+	public ServletDao() {
+		super();
+		System.out.println("Enetring Seller servlet dao");
+		list.add(new SellerProduct("101","Moto g5 plus", "16000", "mobile", "1", "mobile phones"));
+		list.add(new SellerProduct("102","keyboard", "1000", "computer acccesories", "3", "gaming keyborad"));
+		list.add(new SellerProduct("103","mouse", "700", "computer acccesories", "3", "gaming mouse"));
+		list.add(new SellerProduct("104","Plastic bottle", "700", "kitchen acccesories", "10", "high quality plastic water bottle"));
 		
 	}
 
-	
 	public boolean addProduct(SellerProduct product){
 		boolean flag=false;
 		if(!product.equals(null) && !product.getProductId().equals(null))
@@ -128,7 +131,7 @@ public class ServletDao {
 		
 		public List<SellerProduct> getAllProducts()
 		{
-			List<SellerProduct> getAllProducts=null;
+			List<SellerProduct> getAllProducts=new LinkedList<>();
 			if (list.isEmpty()){
 				System.out.println("product list is empty");
 				}

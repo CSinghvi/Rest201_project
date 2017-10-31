@@ -16,30 +16,20 @@
 	<link href="${jstlCss}" rel="stylesheet" />
 
 </head>
+
+
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/getproducts"><h1>Seller</h1></a></li>
-					<li><a href="#about"><h1>Buyer</h1></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<div class="productList">
+<h1>YOUR PRODUCTS</h1>
+<br><br>
+<c:forEach items="${products}" var="ProductList">
+    <tr>
+        <td></td><td><a href="/product/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
+    </tr><br>
+</c:forEach>
 
-	<div class="container">
-
-		<div class="starter-template">
-			<h1>Spring Boot Web JSP Example</h1>
-			<h2>Message: ${message}</h2>
-		</div>
-
-	</div>
+</div>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

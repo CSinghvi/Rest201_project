@@ -16,30 +16,22 @@
 	<link href="${jstlCss}" rel="stylesheet" />
 
 </head>
+
+
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/getproducts"><h1>Seller</h1></a></li>
-					<li><a href="#about"><h1>Buyer</h1></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<div class="productList">
+<h1>PRODUCT INFO</h1>
+<br><br>
+    <br><tr><td>PRODUCT ID : </td><td><c:out value="${product.productId}"/></td></tr><br>  
+    <br><tr><td>PRODUCT NAME : </td><td><c:out value="${product.productName}"/></td></tr><br>
+    <br><tr><td>PRODUCT PRICE : </td><td><c:out value="${product.productPrice}"/></td></tr><br>
+    <br><tr><td>PRODUCT STOCK : </td><td><c:out value="${product.productStock}"/></td></tr><br>
+    <br><tr><td>PRODUCT CATEGORY : </td><td><c:out value="${product.productCategory}"/></td></tr><br>
+    <br><tr><td>PRODUCT DESCRIPTION : </td><td><c:out value="${product.productDescription}"/></td></tr><br>
 
-	<div class="container">
 
-		<div class="starter-template">
-			<h1>Spring Boot Web JSP Example</h1>
-			<h2>Message: ${message}</h2>
-		</div>
-
-	</div>
+</div>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
