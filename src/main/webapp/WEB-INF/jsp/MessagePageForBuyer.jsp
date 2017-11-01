@@ -16,32 +16,19 @@
 	<link href="${jstlCss}" rel="stylesheet" />
 
 </head>
-
-
 <body>
 
-<div>
-<h1><a href="/redirecttoadd">Add a product</a></h1>
-</div>
-<br>
+	<div class="container">
 
-			
+		<div class="starter-template">
+			<h2>Message: ${messsage}</h2>
+		</div>
 
-<div class="productList">
-<h1>YOUR PRODUCTS</h1>
+	</div>
 <br><br>
-<c:forEach items="${products}" var="ProductList">
-    <tr>
-        <td></td><td><a href="/product/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
-    </tr><br>
-</c:forEach>
+<label style="font-family: cursive;margin-left:20%">Return to Home<a style="color: blue;"   href="/buyerpage"  >Click here</a></label>
 
-</div>
-
-<br><br>
-<label style="font-family: cursive;margin-left:30%">Return to Main Page<a style="color: blue;"   href="/"  >Click here</a></label>
-	
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 

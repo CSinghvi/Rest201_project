@@ -20,26 +20,20 @@
 
 <body>
 
-<div>
-<h1><a href="/redirecttoadd">Add a product</a></h1>
-</div>
-<br>
-
-			
 
 <div class="productList">
-<h1>YOUR PRODUCTS</h1>
+<h1>YOUR ordered PRODUCTS</h1>
 <br><br>
 <c:forEach items="${products}" var="ProductList">
     <tr>
-        <td></td><td><a href="/product/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
+        <td></td><td><a href="/orderedproductinfo/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
     </tr><br>
 </c:forEach>
 
 </div>
 
 <br><br>
-<label style="font-family: cursive;margin-left:30%">Return to Main Page<a style="color: blue;"   href="/"  >Click here</a></label>
+<label style="font-family: cursive;margin-left:30%">Return to Main Page<a style="color: blue;"   href="/buyerpage"  >Click here</a></label>
 	
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

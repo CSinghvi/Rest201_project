@@ -21,18 +21,18 @@
 <body>
 
 <div>
-<h1><a href="/redirecttoadd">Add a product</a></h1>
+<h1><a href="/buyerOrder">YOUR ORDERS</a></h1>
 </div>
 <br>
 
 			
 
 <div class="productList">
-<h1>YOUR PRODUCTS</h1>
-<br><br>
+<h1>CHOOSE PRODUCTS FROM VARIOUS CATEGORIES</h1>
+<br>
 <c:forEach items="${products}" var="ProductList">
     <tr>
-        <td></td><td><a href="/product/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
+        <td></td><td><a href="/getsellerproduct/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
     </tr><br>
 </c:forEach>
 

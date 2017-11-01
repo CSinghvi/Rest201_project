@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
 <head>
 
@@ -16,29 +17,25 @@
 	<link href="${jstlCss}" rel="stylesheet" />
 
 </head>
+
+
 <body>
 
-<div class="starter-template">
-			<h2>${message}</h2>
-		</div>
-<br><br>		
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/getproducts"><h1>Seller</h1></a></li>
-					<li><a href="/buyerpage"><h1>Buyer</h1></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<div class="productList">
+<h1>PRODUCT INFO</h1>
+<br>
+    <br><tr><td>PRODUCT ID : </td><td><c:out value="${product.productId}"/></td></tr><br>  
+    <br><tr><td>PRODUCT NAME : </td><td><c:out value="${product.productName}"/></td></tr><br>
+    <br><tr><td>PRODUCT PRICE : </td><td><c:out value="${product.productPrice}"/></td></tr><br>
+    <br><tr><td>PRODUCT CATEGORY : </td><td><c:out value="${product.productCategory}"/></td></tr><br>
+    <br><tr><td>PRODUCT DESCRIPTION : </td><td><c:out value="${product.productDescription}"/></td></tr><br>
 
-	<div class="container">
 
-		
+</div>
 
-	</div>
+
+<br><br>
+<label style="font-family: cursive;margin-left:20%">Return to Home<a style="color: blue;"   href="/buyerpage"  >Click here</a></label>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
