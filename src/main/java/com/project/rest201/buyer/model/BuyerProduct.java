@@ -5,27 +5,52 @@ package com.project.rest201.buyer.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 
 @XmlRootElement
+@Entity
+@Table(name="buyer_product")
 public class BuyerProduct implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
 
 	
+	@Id	
+	@Column(name="order_id")
+	@NotNull
+	private String orderId;
+	
+	@NotNull
+	@Column(name="product_id")
 	private String productId;
+	
+	@Column(name="product_name")
 	private String productName;
+	
+	@Column(name="product_price")
 	private String productPrice;
+	
+	@Column(name="product_category")
 	private String productCategory;
+	
+	@Column(name="product_description")
 	private String productDescription;
+	
+	@Column(name="purchased_date")
+	private String purchasedDate;
 
 	
 	public BuyerProduct() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -37,13 +62,49 @@ public class BuyerProduct implements Serializable{
 	 * @param productDescription
 	 */
 	public BuyerProduct(String productId, String productName, String productPrice, String productCategory,
-			String productDescription) {
+			String productDescription,String purchasedDate) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productCategory = productCategory;
 		this.productDescription = productDescription;
+		this.purchasedDate=purchasedDate;
+	}
+
+	
+
+	public BuyerProduct(String orderId, String productId, String productName, String productPrice,
+			String productCategory, String productDescription, String purchasedDate) {
+		super();
+		this.orderId = orderId;
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productCategory = productCategory;
+		this.productDescription = productDescription;
+		this.purchasedDate = purchasedDate;
+	}
+
+
+	
+	public String getOrderId() {
+		return orderId;
+	}
+
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+
+	public String getPurchasedDate() {
+		return purchasedDate;
+	}
+
+
+	public void setPurchasedDate(String purchasedDate) {
+		this.purchasedDate = purchasedDate;
 	}
 
 
@@ -104,12 +165,10 @@ public class BuyerProduct implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BuyerProduct [productId=" + productId + ", productName=" + productName + ", productPrice="
-				+ productPrice + ", productCategory=" + productCategory + ", productDescription=" + productDescription
-				+ "]";
+		return "BuyerProduct [orderId=" + orderId + ", productId=" + productId + ", productName=" + productName
+				+ ", productPrice=" + productPrice + ", productCategory=" + productCategory + ", productDescription="
+				+ productDescription + ", purchasedDate=" + purchasedDate + "]";
 	}
 
-
-	
 	
 }

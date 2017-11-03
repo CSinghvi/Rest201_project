@@ -32,7 +32,8 @@ public class BuyerServletController {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return new ResponseEntity<String>("Order successfully placed, Will be delivered within this site standard time "+product.getProductId(), HttpStatus.OK);
+		Boolean response=(Boolean)flag;
+		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
 		}
 		
 	
@@ -68,10 +69,10 @@ public class BuyerServletController {
 	
 	@RequestMapping(value ="/getproduct/{id}", method = RequestMethod.GET
 			,produces={MediaType.APPLICATION_JSON_VALUE})
-		public ResponseEntity<?> getProduct(@PathVariable("id") String productId){
+		public ResponseEntity<?> getProduct(@PathVariable("id") String orderId){
 			BuyerProduct product = null;
 			try{
-				product=servletService.getProduct(productId);
+				product=servletService.getProduct(orderId);
 			}
 			catch(Exception e){
 				e.printStackTrace();

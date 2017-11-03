@@ -5,22 +5,40 @@ package com.project.rest201.seller.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 
 @XmlRootElement
+@Entity
+@Table(name="seller_product")
 public class SellerProduct implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
 
-	
+	@Id	
+	@NotNull
+	@Column(name="product_id")
 	private String productId;
+	
+	@Column(name="product_name")
 	private String productName;
+	
+	@Column(name="product_price")
 	private String productPrice;
+	
+	@Column(name="product_category")
 	private String productCategory;
+	
+	@Column(name="product_stock")
 	private String productStock;
+	
+	@Column(name="product_description")
 	private String productDescription;
 
 	

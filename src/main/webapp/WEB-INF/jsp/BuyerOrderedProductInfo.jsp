@@ -24,11 +24,13 @@
 <div class="productList">
 <h1>PRODUCT INFO</h1>
 <br>
+	<br><tr><td>ORDER ID : </td><td><c:out value="${product.orderId}"/></td></tr><br>
     <br><tr><td>PRODUCT ID : </td><td><c:out value="${product.productId}"/></td></tr><br>  
     <br><tr><td>PRODUCT NAME : </td><td><c:out value="${product.productName}"/></td></tr><br>
     <br><tr><td>PRODUCT PRICE : </td><td><c:out value="${product.productPrice}"/></td></tr><br>
     <br><tr><td>PRODUCT CATEGORY : </td><td><c:out value="${product.productCategory}"/></td></tr><br>
     <br><tr><td>PRODUCT DESCRIPTION : </td><td><c:out value="${product.productDescription}"/></td></tr><br>
+    <br><tr><td>DATE OF PURCHASE : </td><td><c:out value="${product.purchasedDate}"/></td></tr><br>
 
 
 </div>

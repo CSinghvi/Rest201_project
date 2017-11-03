@@ -4,29 +4,35 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.rest201.buyer.model.BuyerProduct;
+import com.project.rest201.seller.model.SellerProduct;
 
-
+@Transactional
 @Repository
 public class BuyerServletDao {
 
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
 	public static List<BuyerProduct> list=new LinkedList<BuyerProduct>();;
 	private BuyerProduct buyerProduct;
 	
 	public BuyerServletDao() {
 		super();
 		System.out.println("Entering Buyer servlet dao");
-		list.add(new BuyerProduct("101","Moto g5 plus", "16000", "mobile", "mobile phones"));
-		list.add(new BuyerProduct("102","keyboard", "1000", "computer acccesories", "gaming keyborad"));
-		
 	}
 
 	public boolean buyProduct(BuyerProduct product){
 		boolean flag=false;
 		if(!product.equals(null) && !product.getProductId().equals(null))
 		{
-		list.add(product);
+			entityManager.persist(product);
 		flag=true;
 		System.out.println("buyer successfully purchased the product");
 		}
@@ -39,6 +45,7 @@ public class BuyerServletDao {
 		public boolean updateProduct(BuyerProduct product, String productId){
 			boolean flag=false;
 			int j=0;
+			list=(List<BuyerProduct>)entityManager.createQuery("FROM BuyerProduct").getResultList();
 			if (list.isEmpty()){
 			System.out.println("product list is empty");
 			}
@@ -48,8 +55,12 @@ public class BuyerServletDao {
 					
 					if(list.get(i).getProductId().equals(productId))
 						{
-							list.remove(i);
-							list.add(i, product);
+						BuyerProduct prod=(BuyerProduct) entityManager.find(BuyerProduct.class, productId);
+						prod.setProductName(product.getProductName());
+						prod.setProductPrice(product.getProductPrice());
+						prod.setProductCategory(product.getProductCategory());
+						prod.setProductDescription(product.getProductDescription());
+						entityManager.flush();
 							j++;
 							flag=true;
 							System.out.println("successfully updated the product");
@@ -71,6 +82,7 @@ public class BuyerServletDao {
 		public boolean deletProduct(String productId){
 			boolean flag=false;
 			int j=0;
+			list=(List<BuyerProduct>)entityManager.createQuery("FROM BuyerProduct").getResultList();
 			if (list.isEmpty()){
 			System.out.println("product list is empty");
 			}
@@ -80,7 +92,8 @@ public class BuyerServletDao {
 					
 					if(list.get(i).getProductId().equals(productId))
 						{
-							list.remove(i);
+						BuyerProduct product = (BuyerProduct) entityManager.find(BuyerProduct.class, productId);
+						entityManager.remove(product);
 							j++;
 							flag=true;
 							System.out.println("successfully deleted the product");
@@ -98,19 +111,20 @@ public class BuyerServletDao {
 		}
 		
 		
-		public BuyerProduct getProduct(String productId){
+		public BuyerProduct getProduct(String orderId){
 			BuyerProduct getproduct=null;
 			int j=0;
+			list=(List<BuyerProduct>)entityManager.createQuery("FROM BuyerProduct").getResultList();
 			if (list.isEmpty()){
 			System.out.println("product list is empty");
 			}
-			else if(!productId.equals(null))
+			else if(!orderId.equals(null))
 			{
 				for(int i=0;i<list.size();i++){
 					
-					if(list.get(i).getProductId().equals(productId))
+					if(list.get(i).getOrderId().equals(orderId))
 						{
-						getproduct=list.get(i);
+						getproduct=(BuyerProduct) entityManager.find(BuyerProduct.class, orderId);
 						j++;
 						System.out.println("successfully fetched the product");
 						break;
@@ -130,14 +144,14 @@ public class BuyerServletDao {
 		
 		public List<BuyerProduct> getAllProducts()
 		{
-			List<BuyerProduct> getAllProducts=new LinkedList<>();
-			if (list.isEmpty()){
-				System.out.println("product list is empty");
-				}
-			else{
-				getAllProducts=list;
+			List<BuyerProduct> getAllProducts=null;
+			getAllProducts=(List<BuyerProduct>)entityManager.createQuery("FROM BuyerProduct").getResultList();
+			if(getAllProducts.equals(null)){
+				System.out.println("No products found in database");
 			}
-			
+			else{
+				System.out.println("successfully fetched products data from database");
+			}
 			return getAllProducts;	
 		}
 		

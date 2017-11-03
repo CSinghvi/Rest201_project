@@ -1,6 +1,9 @@
 package com.project.rest201.buyer.clientcontroller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -58,13 +61,19 @@ public class BuyerClientController {
 	        ResponseEntity<SellerProduct> response = restTemplate.getForEntity(REST_SERVICE_URI+"/getproduct/"+productId,SellerProduct.class);
 	        SellerProduct product=new SellerProduct();
 	        product=response.getBody();
+	        Date currentDate=new Date();
+	        String purchasedDate =  DateFormat.getInstance().format(currentDate);  
 	        BuyerProduct buyerProduct=new BuyerProduct(product.getProductId(),product.getProductName(),
-	        		product.getProductPrice(),product.getProductCategory(),product.getProductDescription());
+	        		product.getProductPrice(),product.getProductCategory(),product.getProductDescription(),purchasedDate);
 	         ResponseEntity<String> buyResponse = restTemplate.postForEntity(REST_SERVICE_URI_Buyer+"/buyproduct", buyerProduct,String.class); 
-     
-	         String responseMesssage=buyResponse.getBody();
-		        model.put("messsage", responseMesssage);
-		        return "MessagePageForBuyer";
+              String responseMesssage=buyResponse.getBody();
+	         if(responseMesssage.equals(Boolean.FALSE.toString())){
+			        model.put("messsage", "Product is out of stock");
+	         }
+	         else{
+	        	 model.put("messsage", "Your order "+product.getProductName()+" is successfully placed");
+	         }
+	         return "MessagePageForBuyer";
 	}
 	
 	@RequestMapping("/buyerOrder")
@@ -79,10 +88,10 @@ public class BuyerClientController {
 	}
 	
 	@RequestMapping("/orderedproductinfo/{id}/")
-	public String getOrderedProductInfo(Map<String, Object> model,@PathVariable("id") String productId) {
-		 System.out.println("Testing get Product API----------"+productId);
+	public String getOrderedProductInfo(Map<String, Object> model,@PathVariable("id") String orderId) {
+		 System.out.println("Testing get Product API----------"+orderId);
 	        RestTemplate restTemplate = new RestTemplate();
-	        ResponseEntity<BuyerProduct> response = restTemplate.getForEntity(REST_SERVICE_URI_Buyer+"/getproduct/"+productId,BuyerProduct.class);
+	        ResponseEntity<BuyerProduct> response = restTemplate.getForEntity(REST_SERVICE_URI_Buyer+"/getproduct/"+orderId,BuyerProduct.class);
 	        BuyerProduct product=new BuyerProduct();
 	        product=response.getBody();
 	        model.put("product", product);

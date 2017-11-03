@@ -22,11 +22,11 @@
 
 
 <div class="productList">
-<h1>YOUR ordered PRODUCTS</h1>
+<h1>YOUR ORDERED PRODUCTS</h1>
 <br><br>
 <c:forEach items="${products}" var="ProductList">
     <tr>
-        <td></td><td><a href="/orderedproductinfo/${ProductList.productId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
+        <td></td><td><a href="/orderedproductinfo/${ProductList.orderId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
     </tr><br>
 </c:forEach>
 

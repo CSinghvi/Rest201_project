@@ -1,6 +1,7 @@
 package com.project.rest201.buyer.servletservice;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,15 +22,25 @@ public class BuyerServletService {
 	public static final String REST_SERVICE_URI = "http://localhost:8080/seller";
 	
 	public boolean buyProduct(BuyerProduct product){
-	sellerProduct=new SellerProduct();
+		 Random rand = new Random(); 
+		 int pickedNumber1 =  rand.nextInt(40);
+		 int pickedNumber2=rand.nextInt(20);
+		 String orderId=Integer.toString(pickedNumber1+pickedNumber2);
+		 product.setOrderId(orderId);
+		 sellerProduct=new SellerProduct();
 	boolean flag = false;
 	try{
+		RestTemplate restTemplate = new RestTemplate();
+		  ResponseEntity<SellerProduct> response = restTemplate.getForEntity(REST_SERVICE_URI+"/getproduct/"+product.getProductId(),SellerProduct.class);
+		  sellerProduct=response.getBody();
+		  int stock=Integer.parseInt(sellerProduct.getProductStock());
+		 if(stock<=0){
+			flag=false;
+			return flag;
+		}
 		flag=servletDao.buyProduct(product);
 		if(flag==true){
-			RestTemplate restTemplate = new RestTemplate();
-			  ResponseEntity<SellerProduct> response = restTemplate.getForEntity(REST_SERVICE_URI+"/getproduct/"+product.getProductId(),SellerProduct.class);
-			  sellerProduct=response.getBody();
-			  int num=Integer.parseInt(sellerProduct.getProductStock())-1;
+		int num=Integer.parseInt(sellerProduct.getProductStock())-1;
 			  sellerProduct.setProductStock(Integer.toString(num));
 			  restTemplate.put(REST_SERVICE_URI+"/updateproduct/"+sellerProduct.getProductId(), sellerProduct);
 		}
@@ -65,10 +76,10 @@ public class BuyerServletService {
 	}
 
 	
-	public BuyerProduct getProduct(String productId){
+	public BuyerProduct getProduct(String orderId){
 		BuyerProduct product = null;
 		try{
-			product=servletDao.getProduct(productId);
+			product=servletDao.getProduct(orderId);
 		}
 		catch(Exception e){
 			e.printStackTrace();
