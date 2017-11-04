@@ -37,7 +37,34 @@
 </c:forEach>
 
 </div>
-
+<br>
+<table>
+	<th style="font-family:cursive;">Search Product by Category</th>	<td>
+					<<select name="productCategory" class="loginFields" onchange="location = this.value;" required style="font-family:cursive;text-align:center;padding:2px;">
+					 <option>Select a category</option>
+					  <option value="/getproductsfromcategory/Mobiles">Mobiles</option>
+  					  <option value="/getproductsfromcategory/Computers">Computers</option>
+					  <option value="/getproductsfromcategory/Computer Accessories">Computer Accessories</option>
+					  <option value="/getproductsfromcategory/Mobile Accessories">Mobile Accessories</option>
+					  <option value="/getproductsfromcategory/Electronics">Electronics</option>
+					  <option value="/getproductsfromcategory/Health">Health</option>
+					  <option value="/getproductsfromcategory/Kitchen">Kitchen</option>
+					  <option value="/getproductsfromcategory/Books">Books</option>
+					</select></td>
+					</tr>
+</table>
+<br><br>
+<table>
+	<th style="font-family:cursive;">Search Product by Price</th>	<td>
+					<<select name="productCategory" class="loginFields" onchange="location = this.value;" required style="font-family:cursive;text-align:center;padding:2px;">
+					 <option>Select a category</option>
+					  <option value="/getproductsfromprice/0-500">Under 500</option>
+  					  <option value="/getproductsfromprice/501-1000">Rs500 - Rs1000</option>
+					  <option value="/getproductsfromprice/1000-20000">Rs1000 - Rs20000</option>
+					  <option value="/getproductsfromprice/20000-99999999">Over Rs20000</option>
+					  </select></td>
+					</tr>
+</table>
 <br><br>
 <label style="font-family: cursive;margin-left:30%">Return to Main Page<a style="color: blue;"   href="/"  >Click here</a></label>
 	

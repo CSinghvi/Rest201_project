@@ -93,4 +93,32 @@ public class SellerServletController {
 			return new ResponseEntity<List<SellerProduct>>(allProducts, HttpStatus.OK);
 			}
 	
+	@RequestMapping(value ="/getallproductsforcategory/{category}", method = RequestMethod.GET
+			,produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+			public ResponseEntity<List<SellerProduct>> getAllProductsForCategory(@PathVariable("category") String category){
+				System.out.println("In seller servlet controller PathVariable= "+category);
+			List<SellerProduct> allProducts = null;
+			try{
+				allProducts=servletService.getAllProductsCategories(category);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return new ResponseEntity<List<SellerProduct>>(allProducts, HttpStatus.OK);
+			}
+	
+	@RequestMapping(value ="/getallproductsforprice/{pricerange}", method = RequestMethod.GET
+			,produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+			public ResponseEntity<List<SellerProduct>> getAllProductsForPrice(@PathVariable("pricerange") String pricerange){
+				System.out.println("In seller servlet controller PathVariable= "+pricerange);
+			List<SellerProduct> allProducts = null;
+			try{
+				allProducts=servletService.getAllProductsPrice(pricerange);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return new ResponseEntity<List<SellerProduct>>(allProducts, HttpStatus.OK);
+			}
+	
 }

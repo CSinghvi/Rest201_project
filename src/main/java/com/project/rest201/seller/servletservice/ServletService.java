@@ -1,6 +1,7 @@
 package com.project.rest201.seller.servletservice;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class ServletService {
 	
 	public boolean addProduct(SellerProduct product){
 	boolean flag = false;
+	 Random rand = new Random(); 
+	 int pickedNumber1 =  rand.nextInt(40);
+	 String newProductId=product.getProductId().concat(Integer.toString(pickedNumber1));
+	 product.setProductId(newProductId);
 	try{
 		flag=servletDao.addProduct(product);
 	}
@@ -72,5 +77,29 @@ public class ServletService {
 			e.printStackTrace();
 		}
 		return allProducts;
+		}
+
+
+		public List<SellerProduct> getAllProductsCategories(String category) {
+			List<SellerProduct> allProducts = null;
+			try{
+				allProducts=servletDao.getAllProductsCategories(category);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return allProducts;
+		}
+
+
+		public List<SellerProduct> getAllProductsPrice(String pricerange) {
+			List<SellerProduct> allProducts = null;
+			try{
+				allProducts=servletDao.getAllProductsPrice(pricerange);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return allProducts;
 		}
 }

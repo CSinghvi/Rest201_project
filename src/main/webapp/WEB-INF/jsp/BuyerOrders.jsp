@@ -26,7 +26,7 @@
 <br><br>
 <c:forEach items="${products}" var="ProductList">
     <tr>
-        <td></td><td><a href="/orderedproductinfo/${ProductList.orderId}/"/> <c:out value="${ProductList.productName}"/></a></td>  
+        <td><a href="/orderedproductinfo/${ProductList.orderId}/"/> <c:out value="${ProductList.productName}"/></a></td><td> Date of purchase : <c:out value="${ProductList.purchasedDate}"/></td>  
     </tr><br>
 </c:forEach>
 

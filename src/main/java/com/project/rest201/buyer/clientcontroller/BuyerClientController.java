@@ -43,6 +43,28 @@ public class BuyerClientController {
 		return "BuyerWelcome";
 	}
 	
+	@RequestMapping("/getproductsfromcategory/{category}")
+	public String getProductsFromCategory(Map<String, Object> model,@PathVariable("category") String category) {
+		 System.out.println("Testing get Products category API----------"+category);
+	        RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<List> response = restTemplate.getForEntity(REST_SERVICE_URI+"/getallproductsforcategory/"+category,List.class); 
+	        List<SellerProduct> list=new LinkedList<>();
+	    	list=response.getBody();
+		model.put("products", list);
+		return "CategoryProducts";
+	}
+	
+	@RequestMapping("/getproductsfromprice/{pricerange}")
+	public String getProductsFromPrice(Map<String, Object> model,@PathVariable("pricerange") String pricerange) {
+		 System.out.println("Testing get Products price API----------"+pricerange);
+	        RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<List> response = restTemplate.getForEntity(REST_SERVICE_URI+"/getallproductsforprice/"+pricerange,List.class); 
+	        List<SellerProduct> list=new LinkedList<>();
+	    	list=response.getBody();
+		model.put("products", list);
+		return "CategoryProducts";
+	}
+	
 	@RequestMapping("/getsellerproduct/{id}/")
 	public String getProductInfo(Map<String, Object> model,@PathVariable("id") String productId) {
 		 System.out.println("Testing get Product API----------"+productId);

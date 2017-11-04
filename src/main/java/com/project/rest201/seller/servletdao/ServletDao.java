@@ -189,5 +189,32 @@ public class ServletDao {
 		//	sessionFactory.close();
 			return getAllProducts;	
 		}
+
+		public List<SellerProduct> getAllProductsCategories(String category) {
+			List<SellerProduct> getAllProducts=new LinkedList<>();
+			getAllProducts=(List<SellerProduct>)entityManager.createQuery("FROM SellerProduct p where p.productCategory='"+category+ "'").getResultList();
+			if(!getAllProducts.equals(null)){
+				System.out.println("No products found in database");
+			}
+			else{
+				System.out.println("successfully fetched data from database");
+			}
+			return getAllProducts;			
+			}
+
+		public List<SellerProduct> getAllProductsPrice(String pricerange) {
+			List<SellerProduct> getAllProducts=new LinkedList<>();
+			String str[]=pricerange.split("-");
+			String min=str[0];
+			String max=str[1];
+			getAllProducts=(List<SellerProduct>)entityManager.createQuery("FROM SellerProduct p where p.productPrice>="+min+ " AND p.productPrice<="+max).getResultList();
+			if(!getAllProducts.equals(null)){
+				System.out.println("No products found in database");
+			}
+			else{
+				System.out.println("successfully fetched data from database");
+			}
+			return getAllProducts;		
+		}
 		
 }

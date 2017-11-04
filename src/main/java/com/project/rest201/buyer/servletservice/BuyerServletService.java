@@ -24,8 +24,9 @@ public class BuyerServletService {
 	public boolean buyProduct(BuyerProduct product){
 		 Random rand = new Random(); 
 		 int pickedNumber1 =  rand.nextInt(40);
-		 int pickedNumber2=rand.nextInt(20);
-		 String orderId=Integer.toString(pickedNumber1+pickedNumber2);
+		 Random rand2 = new Random();
+		 int pickedNumber2=rand2.nextInt(40);
+		 String orderId=Integer.toString(pickedNumber1).concat(Integer.toString(pickedNumber2));
 		 product.setOrderId(orderId);
 		 sellerProduct=new SellerProduct();
 	boolean flag = false;

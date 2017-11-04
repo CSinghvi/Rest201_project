@@ -20,36 +20,45 @@
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Name</th>	<td><input  type="text" name="productName" width="100px"
-						 value=${product.productName}	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+					<th style="font-family:cursive;">Product Name</th>	<td><input  type="text" name="productName" width="700px"
+						 value="${product.productName}"	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
 					</tr>
 					
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Price</th>	<td><input  type="text" name="productPrice" width="100px"
-						 value=${product.productPrice}	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+					<th style="font-family:cursive;">Product Price</th>	<td><input  type="text" name="productPrice" width="700px"
+						 value="${product.productPrice}"	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
 					</tr>
 					
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Category</th>	<td><input  type="text" name="productCategory" width="100px"
-						 value=${product.productCategory}	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+						<th style="font-family:cursive;">Product Category</th>	<td>
+					<select name="productCategory" value=${product.productCategory} class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;" width="700px">
+					  <option value="Mobiles">Mobiles</option>
+  					  <option value="Computers">Computers</option>
+					  <option value="Computer Accessories">Computer Accessories</option>
+					  <option value="Mobile Accessories">Mobile Accessories</option>
+					  <option value="Electronics">Electronics</option>
+					  <option value="Health">Health</option>
+					  <option value="Kitchen">Kitchen</option>
+					  <option value="Books">Books</option>
+					</select></td>
 					</tr>
 					
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Stock</th>	<td><input  type="text" name="productStock" width="100px"
-					 value=${product.productStock}	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+					<th style="font-family:cursive;">Product Stock</th>	<td><input  type="text" name="productStock" width="700px"
+					 value="${product.productStock}"	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
 					</tr>
 					
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Descriptions</th>	<td><input  type="text" name="productDescription" width="100px"
-						 value=${product.productDescription}	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+					<th style="font-family:cursive;">Product Descriptions</th>	<td><input  type="text" name="productDescription" width="700px"
+						 value="${product.productDescription}"	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
 					</tr>
 					
 										

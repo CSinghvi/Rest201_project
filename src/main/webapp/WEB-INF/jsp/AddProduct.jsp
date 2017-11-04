@@ -35,8 +35,17 @@
 					<tr>
 					</tr>
 					<tr>
-					<th style="font-family:cursive;">Product Category</th>	<td><input  type="text" name="productCategory" width="100px"
-						 placeholder="product category"	class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;"></td>
+					<th style="font-family:cursive;">Product Category</th>	<td>
+					<select name="productCategory" placeholder="product category" class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;">
+					  <option value="Mobiles">Mobiles</option>
+  					  <option value="Computers">Computers</option>
+					  <option value="Computer Accessories">Computer Accessories</option>
+					  <option value="Mobile Accessories">Mobile Accessories</option>
+					  <option value="Electronics">Electronics</option>
+					  <option value="Health">Health</option>
+					  <option value="Kitchen">Kitchen</option>
+					  <option value="Books">Books</option>
+					</select></td>
 					</tr>
 					
 					<tr>
