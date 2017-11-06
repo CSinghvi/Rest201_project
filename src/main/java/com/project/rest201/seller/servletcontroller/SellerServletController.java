@@ -1,6 +1,9 @@
 package com.project.rest201.seller.servletcontroller;
 
+import java.util.Base64;
 import java.util.List;
+
+import javax.ws.rs.HeaderParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +25,28 @@ public class SellerServletController {
 
 	@Autowired
 	private ServletService servletService;
+	
+	
+	@RequestMapping(value ="/authenticate", method = RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+	)
+	public ResponseEntity<?> authenticate(@RequestHeader("Authorization") String authhead){
+		boolean flag = false;
+		System.out.println("in servlet");
+		Base64.Decoder decoder = Base64.getDecoder();
+				 if (authhead != null) {
+		            byte[] e = decoder.decode(authhead.substring(6));
+		            String usernpass = new String(e);
+		            String user = usernpass.substring(0, usernpass.indexOf(":"));
+		            String password = usernpass.substring(usernpass.indexOf(":") + 1);
+		       	 System.out.println("Servlet : - username "+user+" password "+password);		            // check username and password
+		            if(!user.equals("admin") || !password.equals("admin")){
+		        		flag=false;
+		            }
+		            else flag=true;
+		        }
+	Boolean ret=flag;
+		return new ResponseEntity<String>(ret.toString(), HttpStatus.OK);
+		}
 	
 	@RequestMapping(value ="/addproduct", method = RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
 	)

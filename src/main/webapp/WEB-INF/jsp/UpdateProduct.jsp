@@ -36,6 +36,7 @@
 					<tr>
 						<th style="font-family:cursive;">Product Category</th>	<td>
 					<select name="productCategory" value=${product.productCategory} class="loginFields" required style="font-family:cursive;text-align:center;padding:2px;" width="700px">
+					  <option value="${product.productCategory}">${product.productCategory}</option>
 					  <option value="Mobiles">Mobiles</option>
   					  <option value="Computers">Computers</option>
 					  <option value="Computer Accessories">Computer Accessories</option>

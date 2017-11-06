@@ -61,6 +61,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm
 	compile group: 'org.hibernate', name: 'hibernate-search-orm', version: '5.8.2.Final'
 	
+	// https://mvnrepository.com/artifact/commons-codec/commons-codec
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
 	
 	runtime('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')

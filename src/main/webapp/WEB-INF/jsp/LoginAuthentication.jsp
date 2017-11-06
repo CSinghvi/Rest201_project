@@ -5,6 +5,7 @@
 <head>
 	<!-- Access the bootstrap Css like this,
 		Spring boot will handle the resource mapping automcatically -->
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 	<!--
 	<spring:url value="/css/main.css" var="springCss" />
@@ -16,12 +17,6 @@
 </head>
 <body>
 
-<div data-role="page">
-  <div data-role="header">
-		<div class="starter-template">
-			<h1>${message}</h1>
-		</div>
-	</div>
 <br><br>		
 	<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -30,16 +25,22 @@
 				<ul class="nav navbar-nav">
 					<li class="active">
 					<div data-role="main" class="ui-content">
-   	 <a href="LoginAuthentication.html"><h1>Seller</h1></a>
-	</div>				
-
-					<li><a href="/buyerpage"><h1>Buyer</h1></a></li>
-					</ul>
-					</div>	
-			</div>
-		</nav>
-	</div>
-
+   	  <form method="post" action="/auth">
+        <div>
+          <h3>Login information</h3>
+          <label for="usrnm" class="ui-hidden-accessible">Username:</label>
+          <input type="text" name="user" id="usrnm" placeholder="Username">
+          <br><br>
+          <label for="pswd" class="ui-hidden-accessible">Password:</label>
+          <input type="password" name="passw" id="pswd" placeholder="Password">
+          <br>
+          <input type="submit" data-inline="true" value="Log in">
+        </div>
+      </form>
+    </div>
+  </div>	
+</div>
+</nav>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
